@@ -1,10 +1,22 @@
 class ResultsController < ApplicationController
   def index
     if params[:query].present?
-      @songs = Song.where("lyrics like '%" + params[:query] + "%'")
+      query = params[:query].strip.downcase
+      @songs = Song.where("name_lower like '%" + query + "%' OR lyrics like '%" + query + "%'")
+      @results = Array.new
+      pattern = Regexp.new('\b.{0,30}' + query + '.{0,30}\b')
+      @songs.each do |song|
+        @snippets = song.lyrics.scan(pattern).map{|snip| ("..." + snip.gsub!(query, "<b>"+query+"</b>") + "...").html_safe}
+        @results << {
+          "name" => song.name,
+          "link" => song.link,
+          "snippets" => @snippets
+        }
+        puts @results
+      end
     else
-      @songs = Array.new
+      @results = Array.new
     end
-    @songs
+    @results
   end
 end

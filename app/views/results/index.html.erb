@@ -7,7 +7,7 @@
   <%= form_tag({controller: 'results', action: 'index'}, method: :get) do %>
     <br>
     <div>
-    <%= text_field_tag('query', nil, maxlength: 50, autocomplete: 'on', autofocus: true) %>
+      <%= text_field_tag('query', nil, class: "search-box", size: 50, autofocus: true) %>
     </div>
     <br>
     <%= submit_tag('Search') %>
@@ -15,9 +15,13 @@
 
   <br>
 
-  <% @songs&.each do |song| %>
-    <a href="<%= song&.link %>"><%= song&.name %></a>
-    <p><%= song&.lyrics %></p>
-   <% end %>
+  <div style="padding-left:33%;padding-right:33%;">
+    <% @results&.each do |result| %>
+      <a href="<%= result['link'] %>"><%= result['name'] %></a>
+      <% result['snippets']&.each do |snippet| %>
+        <p><%= snippet %></p>
+      <% end %>
+    <% end %>
+  </div>
 
 </div>
