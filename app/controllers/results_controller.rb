@@ -1,5 +1,10 @@
 class ResultsController < ApplicationController
   def index
-    @song = Song.find_by "lyrics like '%" + params[:query] + "%'" if params[:query].present?
+    if params[:query].present?
+      @songs = Song.where("lyrics like '%" + params[:query] + "%'")
+    else
+      @songs = Array.new
+    end
+    @songs
   end
 end

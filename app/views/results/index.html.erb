@@ -4,16 +4,20 @@
      class="App-logo"
      src="phish-logo.png"/>
 
-
   <%= form_tag({controller: 'results', action: 'index'}, method: :get) do %>
+    <br>
     <div>
     <%= text_field_tag('query', nil, maxlength: 50, autocomplete: 'on', autofocus: true) %>
     </div>
+    <br>
     <%= submit_tag('Search') %>
   <% end %>
 
+  <br>
 
-  <h1><%= @song&.name %></h1>
+  <% @songs&.each do |song| %>
+    <a href="<%= song&.link %>"><%= song&.name %></a>
+    <p><%= song&.lyrics %></p>
+   <% end %>
 
-  <p><%= @song&.lyrics %></p>
 </div>

@@ -1,3 +1,5 @@
+Song.delete_all
+
 Song.create([
   {"name"=>"And So To Bed","name_lower"=>"and so to bed","link"=>"http://www.phish.net/song/and-so-to-bed/lyrics","lyrics"=>"null","lyrics_by"=>"null"},
   {"name"=>"You Enjoy Myself","name_lower"=>"you enjoy myself","link"=>"http://www.phish.net/song/you-enjoy-myself/lyrics","lyrics"=>"  boy man god shit wash uffizi drive me to firenze ","lyrics_by"=>"Anastasio"},
