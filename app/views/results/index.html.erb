@@ -16,7 +16,7 @@
   <br>
 
   <div style="padding-left:33%;padding-right:33%;">
-    <% @results&.each do |result| %>
+    <% @results.each do |result| %>
       <a href="<%= result['link'] %>"><%= result['name'] %></a>
       <% result['snippets']&.each do |snippet| %>
         <p><%= snippet %></p>
