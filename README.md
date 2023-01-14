@@ -1,24 +1,27 @@
-# README
+## GoogliApparatus
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Requirements
+- Ruby (3.1.0)
+- Bundler (2.1.4)
 
-Things you may want to cover:
+### Build with bundler
+```bash
+bundle install
+```
 
-* Ruby version
+### Database migration
+```bash
+bundle exec rails db:migrate
+```
 
-* System dependencies
+### Database seed
+```bash
+bundle exec rake db:seed
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Run the application
+```bash
+bundle exec rails server
+```
+### Deployment
+Successful builds of the main branch are deployed to http://googli-ruby.herokuapp.com
